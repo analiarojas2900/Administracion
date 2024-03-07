@@ -2,11 +2,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Panel de acceso</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'img/img-cisel.png' %}">
+  <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-<h5>hola</h5>
+  <div class="container1">
+    <div class="logo-container">
+        <img src="{% static 'img/img-cisel.png' %}" alt="Logo">
+      </div>
+    <h1>Panel de acceso</h1>
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">Ingreso de personal</button>
+        <div class="accordion-panel">
+          <ul>
+            <li><a href="#">Registrar personal</a></li>
+            <li><a href="#">Lista de personal</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">Ver personal</button>
+        <div class="accordion-panel">
+          <ul>
+            <li><a href="#">Ver detalles de personal</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">Asistencia del personal</button>
+        <div class="accordion-panel">
+          <ul>
+            <li><a href="#">Asistencia del personal</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-button" aria-expanded="false">Contratos del personal</button>
+        <div class="accordion-panel">
+          <ul>
+            <li><a href="#">Contrato</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>

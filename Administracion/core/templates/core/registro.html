@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'img/img-cisel.png' %}">
+  <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+</head>
+
+<body>
+  <article>
+    <section class="container">
+      <div class="login-container">
+        <div class="circle circle-one"></div>
+        <div class="form-container">
+          <form>
+            <div class="logo-container">
+              <img src="{% static 'img/img-cisel.png' %}" alt="Logo">
+            </div>
+            <input type="email" placeholder="EMAIL" />
+            <input type="text" placeholder="USUARIO" />
+            <input type="password" placeholder="CONTRASEÑA" />
+            <a href="" class="login-container-link">REGISTRAR</a>
+          </form>
+          <div class="register-forget opacity">
+            <a class="registrar" href="{% url 'iniciosesion' %}">INICIAR SESION</a>
+          </div>
+        </div>
+        <div class="circle circle-two"></div>
+      </div>
+      <div class="theme-btn-container"></div>
+    </section>
+  </article>
+</body>
+
+</html>
