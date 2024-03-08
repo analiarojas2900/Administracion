@@ -209,84 +209,93 @@ h1 {
   }
 }
 
-:root {
-  --background: #1a1a2e;
-  --color: #ffffff;
-  --primary-color: #0f3460;
+.container1 {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.container1 {
-  max-width: 800px;
-  margin: 0 auto;
+.logo-container {
   text-align: center;
 }
 
 .accordion {
-  margin: 3rem 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .accordion-item {
-  border-bottom: 1px solid #ccc;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 300px;
 }
 
 .accordion-button {
-  display: block;
-  background-color: #007bff;
-  color: #fff;
-  padding: 1rem;
-  border: none;
-  text-align: left;
-  width: 100%;
-  border-radius: 5px;
-  text-transform: uppercase;
-  font-weight: bold;
+  background-color:  #0e133a ;
+  color: white;
   cursor: pointer;
-}
-
-.accordion-button:focus {
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
   outline: none;
+  transition: background-color 0.4s;
 }
 
-.accordion-button:after {
-  content: '+';
-  float: right;
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
-  font-size: 1.5rem;
-  line-height: 0.5;
-  transition: transform 0.3s ease;
-  transform: rotate(0deg);
-}
-
-.accordion-button[aria-expanded="true"]:after {
-  transform: rotate(180deg);
+.accordion-button:hover {
+  background-color:  #0e133a ;
 }
 
 .accordion-panel {
-  padding: 0 1.5rem;
+  padding: 0 18px;
   display: none;
+  overflow: hidden;
 }
 
+.accordion-panel.active {
+  display: block;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  transition: max-height 0.2s ease-out;
+}
+
+.accordion-panel.active .panel {
+  max-height: 100%;
+}
+
+.accordion-panel:not(.active) .panel {
+  max-height: 0;
+}
 .accordion-panel ul {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
-  margin: 0;
 }
 
 .accordion-panel li {
-  padding: 0.5rem 0;
+  margin-bottom: 8px; /* Agrega espacio entre los elementos de la lista */
 }
 
 .accordion-panel li a {
-  display: block;
-  color: #333;
+  color:  #0e133a ;
   text-decoration: none;
-  padding: 0.5rem 0;
 }
 
 .accordion-panel li a:hover {
-  text-decoration: underline;
+  color: #45a049;
+}
+
+.accordion-button::after {
+  content: '+';
+  float: right;
+  margin-left: 5px;
+}
+
+.accordion-button.active::after {
+  content: '-';
 }
