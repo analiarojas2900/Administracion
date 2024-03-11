@@ -121,12 +121,10 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Define la URL base para servir archivos estáticos
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Agrega la ruta del directorio donde se encuentran tus archivos estáticos (JavaScript, CSS, etc.)
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

@@ -16,35 +16,36 @@
         <h1>Panel de acceso</h1>
         <div class="accordion">
             <div class="accordion-item">
-                <button class="accordion-button" data-name="panel1">Ingreso de personal</button>
-                <div class="accordion-panel" id="panel1">
+                <button class="accordion-button" data-target="panel1">Ingreso de personal</button>
+                <div class="accordion-panel panel1">
                     <ul>
-                        <li><a href="#">Registrar personal</a></li>
-                        <li><a href="#">Lista de personal</a></li>
+                        <li><a href="{% url 'registropersonal' %}">Registrar personal</a></li>
+                        <li class="separator"></li>
+                        <li><a href="{% url 'listapersonal' %}">Lista de personal</a></li>
                     </ul>
                 </div>
             </div>
             <div class="accordion-item">
-                <button class="accordion-button" data-name="panel2">Ver personal</button>
-                <div class="accordion-panel" id="panel2">
+                <button class="accordion-button" data-target="panel2">Ver personal</button>
+                <div class="accordion-panel panel2">
                     <ul>
-                        <li><a href="#">Ver detalles de personal</a></li>
+                        <li><a href="{% url 'verpersonal' %}">Ver detalles de personal</a></li>
                     </ul>
                 </div>
             </div>
             <div class="accordion-item">
-                <button class="accordion-button" data-name="panel3">Asistencia del personal</button>
-                <div class="accordion-panel" id="panel3">
+                <button class="accordion-button" data-target="panel3">Asistencia del personal</button>
+                <div class="accordion-panel panel3">
                     <ul>
-                        <li><a href="#">Asistencia del personal</a></li>
+                        <li><a href="{% url 'asistencia' %}">Asistencia del personal</a></li>
                     </ul>
-                </div>
+              </div>
             </div>
             <div class="accordion-item">
-                <button class="accordion-button" data-name="panel4">Contratos del personal</button>
-                <div class="accordion-panel" id="panel4">
+                <button class="accordion-button" data-target="panel4">Contratos del personal</button>
+                <div class="accordion-panel panel4">
                     <ul>
-                        <li><a href="#">Contrato</a></li>
+                        <li><a href="{% url 'contrato' %}">Contrato</a></li>
                     </ul>
                 </div>
             </div>

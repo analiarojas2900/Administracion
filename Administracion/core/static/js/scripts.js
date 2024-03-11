@@ -3,15 +3,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     accordionButtons.forEach(function (accordionButton) {
         accordionButton.addEventListener('click', function () {
-            const accordionPanel = document.getElementById(this.getAttribute('data-name'));
+            const targetPanelClass = this.getAttribute('data-target');
+            const accordionPanel = document.querySelector('.accordion-panel.' + targetPanelClass);
 
             // Toggle 'active' class on the panel
             accordionPanel.classList.toggle('active');
 
-            // Close other panels with the same name
-            const otherPanels = document.querySelectorAll(`.accordion-panel[id="${this.getAttribute('data-name')}"]`);
+            // Close other panels
+            const otherPanels = document.querySelectorAll('.accordion-panel:not(.' + targetPanelClass + ')');
             otherPanels.forEach(function (panel) {
-                if (panel !== accordionPanel && panel.classList.contains('active')) {
+                if (panel.classList.contains('active')) {
                     panel.classList.remove('active');
                     const button = panel.previousElementSibling;
                     button.classList.remove('active');
