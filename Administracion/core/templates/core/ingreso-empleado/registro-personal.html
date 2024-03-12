@@ -7,163 +7,238 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{% static 'img/img-cisel.png' %}">
     <link type="text/css" rel="stylesheet" href="{% static 'css/styleingreso.css' %}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <title>Registro de Empleados</title>
 </head>
 
 <body>
     <h1>Formulario de Ingreso de Personal</h1>
-    <form>
-        <label for="fechaIngreso">Fecha de Ingreso:</label>
-        <input type="date" id="fechaIngreso" name="fechaIngreso" required><br><br>
+    <div class="container">
+        <div class="panel">
+            <h2>Datos Personales</h2>
+            <form>
+                <label for="fechaIngreso" class="calendar-icon">Fecha de Ingreso:
+                    <input type="text" id="fechaIngreso" name="fechaIngreso" class="datepicker" placeholder="dd/mm/yyyy"
+                        readonly>
+                    <img src="{% static 'img/img-calendario.png' %}" alt="Calendario">
+                </label><br><br>
+                <label for="nombreCompleto">Nombre Completo:</label>
+                <input type="text" id="nombreCompleto" name="nombreCompleto" required><br><br>
 
-        <label for="nombreCompleto">Nombre Completo:</label>
-        <input type="text" id="nombreCompleto" name="nombreCompleto" required><br><br>
 
-        <label for="rut">Rut:</label>
-        <input type="text" id="rut" name="rut" required><br><br>
+                <label for="rutCompleto">RUT:</label>
+                <input type="text" id="rutCompleto" name="rutCompleto" placeholder="12.345.678-9"
+                    onchange="separarRut(this.value)" required><br><br>
 
-        <label for="domicilio">Domicilio:</label>
-        <input type="text" id="domicilio" name="domicilio" required><br><br>
 
-        <label for="correo">Correo:</label>
-        <input type="email" id="correo" name="correo" required><br><br>
+                <label for="domicilio">Domicilio:</label>
+                <input type="text" id="domicilio" name="domicilio" required><br><br>
 
-        <label for="afp">AFP:</label>
-        <select id="afp" name="afp">
-            <option value="Provida">Provida</option>
-            <option value="Capital">Capital</option>
-            <option value="Habitat">Habitat</option>
-            <option value="Modelo">Modelo</option>
-            <option value="Planvital">Planvital</option>
-        </select><br><br>
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" name="correo" required><br><br>
 
-        <label for="certificadoPresentado">Certificado Presentado:</label>
-        <input type="radio" id="certificadoPresentadoSi" name="certificadoPresentado" value="Si"> <label for="certificadoPresentadoSi">Sí</label>
-        <input type="radio" id="certificadoPresentadoNo" name="certificadoPresentado" value="No"> <label for="certificadoPresentadoNo">No</label><br><br>
+                <label for="afp">AFP:</label>
+                <select id="afp" name="afp">
+                    <option value="Provida">Provida</option>
+                    <option value="Capital">Capital</option>
+                    <option value="Habitat">Habitat</option>
+                    <option value="Modelo">Modelo</option>
+                    <option value="Planvital">Planvital</option>
+                </select><br><br>
 
-        <label for="copiaCarnet">Copia de carnet:</label>
-        <input type="radio" id="copiaCarnetSi" name="copiaCarnet" value="Si"> <label for="copiaCarnetSi">Sí</label>
-        <input type="radio" id="copiaCarnetNo" name="copiaCarnet" value="No"> <label for="copiaCarnetNo">No</label><br><br>
+                <label for="certificadoPresentado">Certificado Presentado:</label>
+                <input type="radio" id="certificadoPresentadoSi" name="certificadoPresentado" value="Si"> <label
+                    for="certificadoPresentadoSi">Sí</label>
+                <input type="radio" id="certificadoPresentadoNo" name="certificadoPresentado" value="No"> <label
+                    for="certificadoPresentadoNo">No</label><br><br>
 
-        <label for="numeroCalzado">N° de Calzado:</label>
-        <select id="numeroCalzado" name="numeroCalzado">
-            <option value="34">34</option>
-            <option value="35">35</option>
-            <option value="36">36</option>
-            <option value="37">37</option>
-            <option value="38">38</option>
-            <option value="39">39</option>
-            <option value="40">40</option>
-            <option value="41">41</option>
-            <option value="42">42</option>
-            <option value="43">43</option>
-            <option value="44">44</option>
-            <option value="45">45</option>
-        </select><br><br>
+                <label id="labelArchivo" for="archivoCarnet">Subir archivo:</label>
+                <input type="file" id="archivoCarnet" name="archivoCarnet">
+                <button type="button" id="btnArchivo" onclick="document.getElementById('archivoCarnet').click()">
+                    Seleccionar Archivo
+                </button><br><br>
 
-        <label for="horario">Horario:</label>
-        <input type="text" id="horario" name="horario"><br><br>
+                <label for="certificadoAntecedentes">Certificado de antecedentes:</label>
+                <input type="radio" id="certificadoAntecedentesSi" name="certificadoAntecedentes" value="Si"> <label
+                    for="certificadoAntecedentesSi">Sí</label>
+                <input type="radio" id="certificadoAntecedentesNo" name="certificadoAntecedentes" value="No"> <label
+                    for="certificadoAntecedentesNo">No</label><br><br>
 
-        <label for="sueldoBase">Sueldo Base:</label>
-        <input type="number" id="sueldoBase" name="sueldoBase" required><br><br>
+                <label id="labelArchivo" for="archivoCarnet">Subir archivo:</label>
+                <input type="file" id="archivoCarnet" name="archivoCarnet">
+                <button type="button" id="btnArchivo" onclick="document.getElementById('archivoCarnet').click()">
+                    Seleccionar Archivo
+                </button><br><br>
 
-        <label for="telefono">Telefono:</label>
-        <input type="tel" id="telefono" name="telefono" required><br><br>
+                <label for="copiaCarnet">Copia de carnet:</label>
+                <input type="radio" id="copiaCarnetSi" name="copiaCarnet" value="Si" onclick="mostrarCargaArchivo()">
+                <label for="copiaCarnetSi">Sí</label>
+                <input type="radio" id="copiaCarnetNo" name="copiaCarnet" value="No" onclick="mostrarCargaArchivo()">
+                <label for="copiaCarnetNo">No</label><br><br>
 
-        <label for="enCasoEmergencia">En caso emergencia:</label>
-        <input type="tel" id="enCasoEmergencia" name="enCasoEmergencia" required><br><br>
+                <!-- Botón para simular clic en el campo de archivo -->
+                <label id="labelArchivo" for="archivoCarnet">Subir archivo:</label>
+                <input type="file" id="archivoCarnet" name="archivoCarnet">
+                <button type="button" id="btnArchivo" onclick="document.getElementById('archivoCarnet').click()">
+                    Seleccionar Archivo
+                </button><br><br>
 
-        <label for="cargo">Cargo:</label>
-        <input type="text" id="cargo" name="cargo"><br><br>
+                <label for="numeroCalzado">N° de Calzado:</label>
+                <select id="numeroCalzado" name="numeroCalzado">
+                    <option value="34">34</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                </select><br><br>
 
-        <label for="estadoCivil">Estado civil:</label>
-        <select id="estadoCivil" name="estadoCivil">
-            <option value="Soltero/a">Soltero/a</option>
-            <option value="Casado/a">Casado/a</option>
-            <option value="Viudo/a">Viudo/a</option>
-            <option value="Divorciado/a">Divorciado/a</option>
-            <option value="Conviviente">Conviviente</option>
-            <option value="Separado/a">Separado/a</option>
-            <option value="Union libre">Unión libre</option>
-            <option value="Otro">Otro</option>
-        </select><br><br>
+                <label for="horario">Horario:</label>
+                <input type="text" id="horario" name="horario"><br><br>
 
-        <label for="nacimiento">Nacido en:</label>
-        <input type="text" id="nacimiento" name="nacimiento" required><br><br>
+                <label for="sueldoBase">Sueldo Base:</label>
+                <input type="number" id="sueldoBase" name="sueldoBase" required><br><br>
 
-        <label for="nacionalidad">Nacionalidad:</label>
-        <select id="nacionalidad" name="nacionalidad">
-            <option value="Chilena">Chilena</option>
-            <option value="Argentina">Argentina</option>
-            <option value="Peruana">Peruana</option>
-            <option value="Boliviana">Boliviana</option>
-            <option value="Colombiana">Colombiana</option>
-            <option value="Venezolana">Venezolana</option>
-            <option value="Brasileña">Brasileña</option>
-            <option value="Ecuatoriana">Ecuatoriana</option>
-            <option value="Uruguaya">Uruguaya</option>
-            <option value="Paraguaya">Paraguaya</option>
-            <option value="Mexicana">Mexicana</option>
-            <option value="Estadounidense">Estadounidense</option>
-            <option value="Canadiense">Canadiense</option>
-            <option value="Española">Española</option>
-            <option value="Francesa">Francesa</option>
-        </select><br><br>
+                <label for="telefono">Telefono:</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+56" required><br><br>
 
-        <label for="obra">Obra:</label>
-        <input type="text" id="obra" name="obra"><br><br>
+                <label for="enCasoEmergencia">En caso emergencia:</label>
+                <input type="tel" id="enCasoEmergencia" name="enCasoEmergencia" required><br><br>
+            </form>
+        </div>
+        <div class="panel">
+            <h2>Datos Adicionales</h2>
+            <form>
+                <label for="cargo">Cargo:</label>
+                <input type="text" id="cargo" name="cargo"><br><br>
 
-        <label for="autorizacion">Autorización:</label>
-        <input type="text" id="autorizacion" name="autorizacion"><br><br>
+                <label for="estadoCivil">Estado civil:</label>
+                <select id="estadoCivil" name="estadoCivil">
+                    <option value="Soltero/a">Soltero/a</option>
+                    <option value="Casado/a">Casado/a</option>
+                    <option value="Viudo/a">Viudo/a</option>
+                    <option value="Divorciado/a">Divorciado/a</option>
+                    <option value="Conviviente">Conviviente</option>
+                    <option value="Separado/a">Separado/a</option>
+                    <option value="Union libre">Unión libre</option>
+                    <option value="Otro">Otro</option>
+                </select><br><br>
 
-        <label for="certificadoAntecedentes">Certificado de antecedentes:</label>
-        <input type="radio" id="certificadoAntecedentesSi" name="certificadoAntecedentes" value="Si"> <label for="certificadoAntecedentesSi">Sí</label>
-        <input type="radio" id="certificadoAntecedentesNo" name="certificadoAntecedentes" value="No"> <label for="certificadoAntecedentesNo">No</label><br><br>
+                <label for="nacimiento">Nacido en:</label>
+                <input type="text" id="nacimiento" name="nacimiento" required><br><br>
 
-        <label for="salud">Salud:</label>
-        <input type="text" id="salud" name="salud"><br><br>
+                <label for="nacionalidad">Nacionalidad:</label>
+                <select id="nacionalidad" name="nacionalidad">
+                    <option value="Chilena">Chilena</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Peruana">Peruana</option>
+                    <option value="Boliviana">Boliviana</option>
+                    <option value="Colombiana">Colombiana</option>
+                    <option value="Venezolana">Venezolana</option>
+                    <option value="Brasileña">Brasileña</option>
+                    <option value="Ecuatoriana">Ecuatoriana</option>
+                    <option value="Uruguaya">Uruguaya</option>
+                    <option value="Paraguaya">Paraguaya</option>
+                    <option value="Mexicana">Mexicana</option>
+                    <option value="Estadounidense">Estadounidense</option>
+                    <option value="Canadiense">Canadiense</option>
+                    <option value="Española">Española</option>
+                    <option value="Francesa">Francesa</option>
+                </select><br><br>
 
-        <label for="certificadoPresentado">Certificado Presentado:</label>
-        <input type="radio" id="certificadoPresentadoSi" name="certificadoPresentado" value="Si"> <label for="certificadoPresentadoSi">Sí</label>
-        <input type="radio" id="certificadoPresentadoNo" name="certificadoPresentado" value="No"> <label for="certificadoPresentadoNo">No</label><br><br>
+                <label for="obra">Obra:</label>
+                <input type="text" id="obra" name="obra"><br><br>
 
-        <label for="terminoContrato">Término de contrato:</label>
-        <input type="text" id="terminoContrato" name="terminoContrato"><br><br>
+                <label for="autorizacion">Autorización:</label>
+                <input type="text" id="autorizacion" name="autorizacion"><br><br>
 
-        <label for="nivelEducacional">Nivel educacional:</label>
-        <input type="text" id="nivelEducacional" name="nivelEducacional"><br><br>
 
-        <label for="banco">Banco:</label>
-        <select id="banco" name="banco">
-            <option value="Banco de Chile">Banco de Chile</option>
-            <option value="Banco Estado">Banco Estado</option>
-            <option value="Banco Santander Chile">Banco Santander Chile</option>
-            <option value="Banco Itaú Chile">Banco Itaú Chile</option>
-            <option value="Banco BCI">Banco BCI</option>
-            <option value="Banco Security">Banco Security</option>
-            <option value="Banco Falabella">Banco Falabella</option>
-            <option value="Banco de Crédito e Inversiones (BCI)">Banco de Crédito e Inversiones (BCI)</option>
-            <option value="Scotiabank Chile">Scotiabank Chile</option>
-            <option value="Banco BBVA Chile">Banco BBVA Chile</option>
-        </select><br><br>
+                <label>Salud:</label>
+                <select id="salud" name="salud">
+                    <option value="tramoa">TRAMO A</option>
+                    <option value="tramob">TRAMO B</option>
+                    <option value="tramoc">TRAMO C</option>
+                    <option value="tramod">TRAMO D</option>
+                </select><br><br>
 
-        <label for="enfermedad">Padece de alguna enfermedad:</label>
-        <input type="radio" id="enfermedadSi" name="enfermedad" value="Si"> <label for="enfermedadSi">Sí</label>
-        <input type="radio" id="enfermedadNo" name="enfermedad" value="No"> <label for="enfermedadNo">No</label><br><br>
 
-        <label for="cualEnfermedad">¿Cuál?</label>
-        <input type="text" id="cualEnfermedad" name="cualEnfermedad"><br><br>
+                <label for="certificadoPresentados">Certificado Presentado:</label>
+                <input type="radio" id="certificadoPresentadosSi" name="certificadoPresentados" value="Si"> <label
+                    for="certificadoPresentadosSi">Sí</label>
+                <input type="radio" id="certificadoPresentadosNo" name="certificadoPresentados" value="No"> <label
+                    for="certificadoPresentadosNo">No</label><br><br>
 
-        <label for="farmaco">Consume algun fármaco:</label>
-        <input type="radio" id="farmacoSi" name="farmaco" value="Si"> <label for="farmacoSi">Sí</label>
-        <input type="radio" id="farmacoNo" name="farmaco" value="No"> <label for="farmacoNo">No</label><br><br>
+                <label id="labelArchivo" for="archivoCarnet">Subir archivo:</label>
+                <input type="file" id="archivoCarnet" name="archivoCarnet">
+                <button type="button" id="btnArchivo" onclick="document.getElementById('archivoCarnet').click()">
+                    Seleccionar Archivo
+                </button><br><br>
 
-        <label for="droga">Consume Droga:</label>
-        <input type="radio" id="drogaSi" name="droga" value="Si"> <label for="drogaSi">Sí</label>
-        <input type="radio" id="drogaNo" name="droga" value="No"> <label for="drogaNo">No</label><br><br>
 
-        <input type="submit" value="Enviar">
-    </form>
+                <label for="terminocontrato" class="calendar-icon">
+                    Termino de contrato:
+                    <input type="text" id="terminocontrato" name="terminocontrato" class="datepicker" required>
+                    <img src="{% static 'img/img-calendario.png' %}" alt="Calendario">
+                </label>
+
+                <label for="nivelEducacional">Nivel Educacional:</label>
+                <select id="nivelEducacional" name="nivelEducacional">
+                    <option value="Educación Básica Completa">Educación Básica Completa</option>
+                    <option value="Educación Básica Incompleta">Educación Básica Incompleta</option>
+                    <option value="Educación Media Completa">Educación Media Completa</option>
+                    <option value="Educación Media Incompleta">Educación Media Incompleta</option>
+                    <option value="Educación Superior Completa">Educación Superior Completa</option>
+                    <option value="Educación Superior Incompleta">Educación Superior Incompleta</option>
+                </select><br><br>
+
+
+                <label for="banco">Banco:</label>
+                <select id="banco" name="banco">
+                    <option value="Banco de Chile">Banco de Chile</option>
+                    <option value="Banco Estado">Banco Estado</option>
+                    <option value="Banco Santander Chile">Banco Santander Chile</option>
+                    <option value="Banco Itaú Chile">Banco Itaú Chile</option>
+                    <option value="Banco BCI">Banco BCI</option>
+                    <option value="Banco Security">Banco Security</option>
+                    <option value="Banco Falabella">Banco Falabella</option>
+                    <option value="Banco de Crédito e Inversiones (BCI)">Banco de Crédito e Inversiones (BCI)</option>
+                    <option value="Scotiabank Chile">Scotiabank Chile</option>
+                    <option value="Banco BBVA Chile">Banco BBVA Chile</option>
+                </select><br><br>
+
+                <label for="enfermedad">Padece de alguna enfermedad:</label>
+                <input type="radio" id="enfermedadSi" name="enfermedad" value="Si"> <label for="enfermedadSi">Sí</label>
+                <input type="radio" id="enfermedadNo" name="enfermedad" value="No"> <label
+                    for="enfermedadNo">No</label><br><br>
+
+                <label for="cualEnfermedad">¿Cuál?</label>
+                <input type="text" id="cualEnfermedad" name="cualEnfermedad"><br><br>
+
+                <label for="farmaco">Consume algun fármaco:</label>
+                <input type="radio" id="farmacoSi" name="farmaco" value="Si"> <label for="farmacoSi">Sí</label>
+                <input type="radio" id="farmacoNo" name="farmaco" value="No"> <label for="farmacoNo">No</label><br><br>
+
+                <label for="cualFarmaco">¿Cuál?</label>
+                <input type="text" id="cualFarmaco" name="cualFarmaco"><br><br>
+
+                <label for="droga">Consume Droga:</label>
+                <input type="radio" id="drogaSi" name="droga" value="Si"> <label for="drogaSi">Sí</label>
+                <input type="radio" id="drogaNo" name="droga" value="No"> <label for="drogaNo">No</label><br><br>
+
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/scripts2.js' %}"></script>
 </body>
 
 </html>
