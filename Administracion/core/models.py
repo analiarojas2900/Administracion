@@ -1,3 +1,41 @@
 from django.db import models
 
-# Create your models here.
+class Empleado(models.Model):
+    fecha_ingreso = models.DateField()
+    nombre_completo = models.CharField(max_length=200)
+    rut_completo = models.CharField(max_length=12)
+    domicilio = models.CharField(max_length=200)
+    correo = models.EmailField()
+    afp = models.CharField(max_length=50)
+    certificado_presentado = models.BooleanField()
+    archivo_carnet = models.FileField(upload_to='archivos/')
+    certificado_antecedentes = models.BooleanField()
+    archivo_antecedentes = models.FileField(upload_to='archivos/')
+    copia_carnet = models.BooleanField()
+    archivo_copia_carnet = models.FileField(upload_to='archivos/', blank=True)
+    numero_calzado = models.CharField(max_length=2)
+    horario = models.CharField(max_length=50)
+    sueldo_base = models.CharField(max_length=10)
+    telefono = models.CharField(max_length=15)
+    en_caso_emergencia = models.CharField(max_length=15)
+    cargo = models.CharField(max_length=100)
+    estado_civil = models.CharField(max_length=50)
+    nacimiento = models.CharField(max_length=50)
+    nacionalidad = models.CharField(max_length=50)
+    obra = models.CharField(max_length=100)
+    autorizacion = models.CharField(max_length=100)
+    salud = models.CharField(max_length=10)
+    certificado_presentados = models.BooleanField()
+    archivo_certificado = models.FileField(upload_to='archivos/', blank=True)
+    termino_contrato = models.DateField()
+    nivel_educacional = models.CharField(max_length=100)
+    banco = models.CharField(max_length=100)
+    enfermedad = models.BooleanField()
+    cual_enfermedad = models.CharField(max_length=100, blank=True)
+    farmaco = models.BooleanField()
+    cual_farmaco = models.CharField(max_length=100, blank=True)
+    droga = models.BooleanField()
+    cual_droga = models.CharField(max_length=100, blank=True)
+
+    def __str__(self):
+        return self.nombre_completo

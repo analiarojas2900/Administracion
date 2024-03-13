@@ -26,3 +26,13 @@ function separarRut(rutCompleto) {
     document.getElementById("rut").value = rut;
     document.getElementById("dv").value = dv;
 }
+
+
+document.getElementById("sueldoBase").addEventListener("input", function(event) {
+    var sueldo = event.target.value;
+    if (sueldo && !sueldo.includes("$")) {
+        var sueldoNumerico = parseInt(sueldo.replace(/\D/g,'')); // Elimina caracteres no numéricos
+        sueldo = "$" + sueldoNumerico.toLocaleString('es-CL'); // Añade el símbolo de peso y formatea el número como CLP
+        event.target.value = sueldo.replace(/,/g, 'G'); // Reemplaza las comas por 'G'
+    }
+});

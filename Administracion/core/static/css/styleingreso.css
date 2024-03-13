@@ -14,7 +14,7 @@ body {
 }
 
 .panel {
-    width: calc(45% - 20px);
+    width: 45%; /* Cambiado a un ancho del 45% */
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -23,6 +23,7 @@ body {
 }
 
 .panel h2 {
+    text-align: center; /* Alineado al centro */
     color: #333;
     margin-bottom: 20px;
 }
@@ -61,7 +62,8 @@ body {
 }
 
 .panel input[type="radio"] {
-    display: none;}
+    display: none;
+}
 
 .panel input[type="radio"] + label {
     display: inline-block;
@@ -126,28 +128,17 @@ body {
     cursor: pointer;
 }
 
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo-container img {
+    width: 200px;
+    height: auto;
+  }
 
 
-
-
-
-h2 {
+.ingreso{
     text-align: center;
 }
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-input[type="text"] {
-    width: calc(100% - 10px);
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
