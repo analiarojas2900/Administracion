@@ -123,6 +123,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Define la URL base para servir archivos estáticos
 STATIC_URL = '/static/'
 
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'core/static'),
+]
 # Agrega la ruta del directorio donde se encuentran tus archivos estáticos (JavaScript, CSS, etc.)
 
 # Default primary key field type

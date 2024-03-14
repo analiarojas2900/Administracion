@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import EmpleadoForm
 
 # Create your views here.
 def registro(request):
@@ -11,7 +12,14 @@ def iniciosesion(request):
     return render(request,"core/registro/iniciosesion.html")
 
 def registropersonal(request):
-    return render(request,"core/ingreso-empleado/registro-personal.html")
+    if request.method == 'POST':
+        form = EmpleadoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Redirige a la URL con nombre 'home'
+    else:
+        form = EmpleadoForm()
+    return render(request, 'core/ingreso-empleado/registro-personal.html', {'form': form})
 
 def listapersonal(request):
     return render(request,"core/ingreso-empleado/lista-personal.html")
