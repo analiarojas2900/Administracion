@@ -19,15 +19,15 @@ class Empleado(models.Model):
         ("Planvital", "Planvital"),
     ))
     certificado_presentado = models.BooleanField(default=False)
-    certificado_presentado_afp = models.FileField(upload_to='certificados_afp/', default="")
+    certificado_presentado_afp = models.FileField(upload_to='static/img/certificados_afp/', default=None)  # Cambio aquí
     certificado_antecedentes = models.BooleanField(default=False)
-    certificado_antecedentes_archivo = models.FileField(upload_to='certificados_antecedentes/', default="")
+    certificado_antecedentes_archivo = models.FileField(upload_to='static/img/certificados_antecedentes/', default=None)  # Cambio aquí
     copia_carnet = models.BooleanField(default=False)
-    copia_carnet_archivo = models.FileField(upload_to='copias_carnet/', default="")
+    copia_carnet_archivo = models.FileField(upload_to='static/img/copias_carnet/', default=None)  # Cambio aquí
     numero_calzado = models.PositiveSmallIntegerField(choices=[
         (34, '34'), (35, '35'), (36, '36'), (37, '37'), (38, '38'), (39, '39'),
         (40, '40'), (41, '41'), (42, '42'), (43, '43'), (44, '44'), (45, '45'),
-    ], default="34")
+    ], default=34)  # Cambio aquí
     horario = models.CharField(max_length=50)
     sueldo_base = models.DecimalField(max_digits=10, decimal_places=2)
     telefono = models.CharField(max_length=20)
@@ -52,7 +52,7 @@ class Empleado(models.Model):
         ("tramoa", "TRAMO A"), ("tramob", "TRAMO B"), ("tramoc", "TRAMO C"), ("tramod", "TRAMO D"),
     ), default="tramoa")
     certificado_presentado_salud = models.BooleanField(default=False)
-    certificado_presentado_salud_archivo = models.FileField(upload_to='certificados_salud/', default="")
+    certificado_presentado_salud_archivo = models.FileField(upload_to='static/img/certificados_salud/', default=None)  # Cambio aquí
     termino_contrato = models.DateField(null=True, blank=True)
     nivel_educacional = models.CharField(max_length=100, choices=(
         ("Educación Básica Completa", "Educación Básica Completa"),

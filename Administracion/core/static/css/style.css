@@ -4,9 +4,23 @@
   --primary-color: #0f3460;
 }
 
+
+
+
+
 .logo-container {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.logo-container1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo-container1 img {
+  width: 300px;
+  height: auto;
 }
 
 .logo-container img {
@@ -159,12 +173,18 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  
+}
+
+a{
+  text-decoration: none;
 }
 
 .accordion-item {
-  width: 100%;
-  max-width: 350px; /* Ajustamos el ancho máximo */
-  margin-bottom: 20px;
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 30px;
+    margin-left: 60px;
 }
 
 .accordion-button {

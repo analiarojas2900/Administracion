@@ -25,8 +25,11 @@ SECRET_KEY = 'django-insecure-ts@mnu(p8d#6h)l4^(av^k&8@v@4x*an04&-f5))_tgd_!%su!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['example.com', '127.0.0.1']
 
+# ...
+
+#
 
 # Application definition
 
@@ -124,8 +127,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_URL = '/static/'
 
 
+
+# Agrega la ruta del directorio donde se encuentran tus archivos estáticos (JavaScript, CSS, etc.)
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'core/static'),
+    os.path.join(BASE_DIR, 'core/static/img/empleados'),
 ]
 # Agrega la ruta del directorio donde se encuentran tus archivos estáticos (JavaScript, CSS, etc.)
 

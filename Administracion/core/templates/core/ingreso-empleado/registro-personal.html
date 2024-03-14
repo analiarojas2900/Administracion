@@ -21,7 +21,8 @@
     <div class="container">
         <div class="panel">
             <h2>Datos Personales</h2>
-            <form method="post" >
+            <form method="post">
+                {% csrf_token %}
                 <label for="fechaingreso" class="calendar-icon">
                      Fecha ingreso:
                     <input type="text" id="fechaingreso" name="fechaingreso" class="datepicker"  placeholder="dd/mm/yyyy" required>
@@ -104,7 +105,8 @@
         </div>
         <div class="panel">
             <h2>Datos Adicionales</h2>
-            <form>
+            <form method="post">
+                {% csrf_token %}
                 <label for="cargo">Cargo:</label>
                 <input type="text" id="cargo" name="cargo"><br><br>
                 <label for="estadoCivil">Estado civil:</label>

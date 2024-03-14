@@ -15,12 +15,20 @@ def registropersonal(request):
     if request.method == 'POST':
         form = EmpleadoForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('home')  # Redirige a la URL con nombre 'home'
+            try:
+                form.save()
+                return redirect('home')  # Redirige a la URL con nombre 'home'
+            except Exception as e:
+                # Manejo de errores: puedes imprimir el error para ver qué está pasando
+                print(e)
+                # También puedes agregar un mensaje de error para mostrar al usuario
+                error_message = "Ocurrió un error al guardar el empleado. Por favor, inténtalo de nuevo."
+                return render(request, 'core/ingreso-empleado/registro-personal.html', {'form': form, 'error_message': error_message})
     else:
         form = EmpleadoForm()
     return render(request, 'core/ingreso-empleado/registro-personal.html', {'form': form})
 
+    
 def listapersonal(request):
     return render(request,"core/ingreso-empleado/lista-personal.html")
 
