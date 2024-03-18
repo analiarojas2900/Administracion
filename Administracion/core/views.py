@@ -11,23 +11,19 @@ def home(request):
 def iniciosesion(request):
     return render(request,"core/registro/iniciosesion.html")
 
+
 def registropersonal(request):
     if request.method == 'POST':
-        form = EmpleadoForm(request.POST)
+        form = EmpleadoForm(request.POST, request.FILES) # Asegúrate de incluir request.FILES para manejar archivos
         if form.is_valid():
-            try:
-                form.save()
-                return redirect('home')  # Redirige a la URL con nombre 'home'
-            except Exception as e:
-                # Manejo de errores: puedes imprimir el error para ver qué está pasando
-                print(e)
-                # También puedes agregar un mensaje de error para mostrar al usuario
-                error_message = "Ocurrió un error al guardar el empleado. Por favor, inténtalo de nuevo."
-                return render(request, 'core/ingreso-empleado/registro-personal.html', {'form': form, 'error_message': error_message})
+            form.save()
+            return redirect('home')
+        else:
+            # Aquí puedes manejar los errores de validación, por ejemplo, imprimirlos en la consola o mostrarlos en la página
+            print(form.errors)
     else:
         form = EmpleadoForm()
     return render(request, 'core/ingreso-empleado/registro-personal.html', {'form': form})
-
     
 def listapersonal(request):
     return render(request,"core/ingreso-empleado/lista-personal.html")

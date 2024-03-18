@@ -21,7 +21,7 @@
     <div class="container">
         <div class="panel">
             <h2>Datos Personales</h2>
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <label for="fechaingreso" class="calendar-icon">
                      Fecha ingreso:
@@ -105,7 +105,7 @@
         </div>
         <div class="panel">
             <h2>Datos Adicionales</h2>
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <label for="cargo">Cargo:</label>
                 <input type="text" id="cargo" name="cargo"><br><br>

@@ -126,12 +126,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Define la URL base para servir archivos estáticos
 STATIC_URL = '/static/'
 
+# Define la ruta donde se almacenarán los archivos multimedia subidos por los usuarios
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Define la URL base para servir archivos multimedia
+MEDIA_URL = '/media/'
 
 
 # Agrega la ruta del directorio donde se encuentran tus archivos estáticos (JavaScript, CSS, etc.)
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'core/static'),
     os.path.join(BASE_DIR, 'core/static/img/empleados'),
+    
 ]
 # Agrega la ruta del directorio donde se encuentran tus archivos estáticos (JavaScript, CSS, etc.)
 
