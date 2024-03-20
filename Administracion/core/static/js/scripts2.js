@@ -12,6 +12,8 @@ function mostrarCargaArchivo() {
 }
 
 
+
+
 $(document).ready(function() {
     $(".datepicker").datepicker({
         dateFormat: 'dd/mm/yy'
@@ -30,9 +32,13 @@ function separarRut(rutCompleto) {
 
 document.getElementById("sueldoBase").addEventListener("input", function(event) {
     var sueldo = event.target.value;
-    if (sueldo && !sueldo.includes("$")) {
-        var sueldoNumerico = parseInt(sueldo.replace(/\D/g,'')); // Elimina caracteres no numéricos
-        sueldo = "$" + sueldoNumerico.toLocaleString('es-CL'); // Añade el símbolo de peso y formatea el número como CLP
-        event.target.value = sueldo.replace(/,/g, 'G'); // Reemplaza las comas por 'G'
-    }
+    // Eliminar todos los caracteres que no sean números
+    sueldo = sueldo.replace(/\D/g,'');
+    // Añadir símbolo de moneda y formatear con separadores de miles
+    sueldo = "$" + Number(sueldo).toLocaleString('es-CL');
+    // Actualizar el valor del campo con el sueldo formateado
+    event.target.value = sueldo;
 });
+
+
+

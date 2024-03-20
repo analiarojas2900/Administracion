@@ -14,17 +14,14 @@ def iniciosesion(request):
 
 def registropersonal(request):
     if request.method == 'POST':
-        form = EmpleadoForm(request.POST, request.FILES) # Asegúrate de incluir request.FILES para manejar archivos
+        form = EmpleadoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('home')
-        else:
-            # Aquí puedes manejar los errores de validación, por ejemplo, imprimirlos en la consola o mostrarlos en la página
-            print(form.errors)
+            return redirect('home')  # Corrección: Redirigir al nombre de la vista, no a la URL
     else:
         form = EmpleadoForm()
     return render(request, 'core/ingreso-empleado/registro-personal.html', {'form': form})
-    
+
 def listapersonal(request):
     return render(request,"core/ingreso-empleado/lista-personal.html")
 
